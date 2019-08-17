@@ -1,7 +1,8 @@
-# URL-Shortening-Service
-카카오페이 경력직채용 사내정보시스템 개발 사전과제
+# 카카오페이 경력직채용 사내정보시스템 개발 사전과제 
 
-URL을 입력받아 짧게 줄여주고, Shortening된 URL을 입력하면 원래 URL로 리다이렉트하는 URL Shortening Service 만들기
+#프로젝트 소개
+
+URL을 입력받아 단축 URL을 제공하고 해당 URL로 접근할 때 입력받았던 URL로 리다이덱트 시켜주는 웹 서비스 프로그램
 
 #요구사항
 * webapp으로 개발하고 URL 입력폼 제공 및 결과 출력 
