@@ -78,4 +78,45 @@
       CREATE USER kakaoPayUser identified by kakaoPayUser
       GRANT CONNECT, RESOURCE, DBA TO kakaoPayUser
 ```
+  2. 위의 생성한 계정으로 접속 후 Table 및 Sequence 생성
+```
+      CREATE TABLE T_URL01 (
+         URL_ID                NUMBER             CONSTRAINT PK_URL01 PRIMARY KEY, --고유한 정수값 Sequence값 들어감
+         ORIGIN_URL            CLOB               NOT NULL ,    --원본 URL
+         SHORT_URL             VARCHAR2(100)      NOT NULL UNIQUE,  -- Shortening Key
+         CALL_CNT              NUMBER             DEFAULT 0,
+         INS_TIME              TIMESTAMP          DEFAULT SYSTIMESTAMP,
+         LAST_TIME             TIMESTAMP          DEFAULT SYSTIMESTAMP
+     )
+     ;
+     
+     CREATE SEQUENCE SEQ_URL01 START WITH 100000 INCREMENT BY 1 NOMAXVALUE MINVALUE 0 ;
+```
+
+## Server 세팅
+
+  1. tomcat 8.5 설치 및 이클립스와 연동
+  
+  2. server.xml의       
+```
+<Context docBase="URL-Shortening-Service" path="/pay" reloadable="true" source="org.eclipse.jst.jee.server:URL-Shortening-Service"/></Host>
+
+```
+
+부분을 아래와 같이 수정
+
+```
+<Context docBase="URL-Shortening-Service" path="/" reloadable="true" source="org.eclipse.jst.jee.server:URL-Shortening-Service"/></Host>
+
+``` 
+
+## 정리
+
+```
+  1. URL 입력 시 DB 에 해당 URL이 이미 존재하는지 체크하고 이미 존재한다면 Shortening Key 반환
+  2. URL이 DB에 없다면 SEQ_URL01.NEXTVAL 하여 다음 id 획득
+  3. 고유한 정수인 id값을 base62 encode 하여 Shortening Key 생성 후 DB 저장 후 반환
+  4. http://localhost:8080/{Shortening Key} 요청시 DB에서 해당 Shortening Key에 해당하는 URL을 조회 하여 해당 URL로 리다이렉트함
+```
+
 
