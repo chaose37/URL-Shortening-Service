@@ -379,6 +379,13 @@ public class HomeController {
 		          
 		          url = output.toString();
 			}
+			
+			pstmt = conn.prepareStatement("UPDATE T_URL01 T1 SET T1.CALL_CNT = NVL(T1.CALL_CNT,0) + 1, T1.LAST_TIME  = SYSTIMESTAMP WHERE T1.SHORT_URL = ?");
+			
+			pstmt.setString(1, shortUrl);
+			
+			pstmt.executeUpdate();
+			
 			conn.commit();
 		}
 		catch(SQLException se) 
