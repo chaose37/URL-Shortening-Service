@@ -97,7 +97,11 @@
 
   1. tomcat 8.5 설치 및 이클립스와 연동
   
-  2. server.xml의       
+  2. 생성된 tomcat 8.5 서버를 우클릭 Add anc remove 선택
+  
+  3. 프로젝트 선택 후 Add 후 Finish
+  
+  4. Server > Tomcat 8.5 > server.xml의 내용수정       
 ```
 <Context docBase="URL-Shortening-Service" path="/pay" reloadable="true" source="org.eclipse.jst.jee.server:URL-Shortening-Service"/></Host>
 
