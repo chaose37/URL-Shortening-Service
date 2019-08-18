@@ -93,6 +93,8 @@
      CREATE SEQUENCE SEQ_URL01 START WITH 100000 INCREMENT BY 1 NOMAXVALUE MINVALUE 0 ;
 ```
 
+참조 : https://github.com/chaose37/URL-Shortening-Service/blob/master/file/DB.sql
+
 ## Server 세팅
 
   1. tomcat 8.5 설치 및 이클립스와 연동
@@ -113,6 +115,8 @@
 <Context docBase="URL-Shortening-Service" path="/" reloadable="true" source="org.eclipse.jst.jee.server:URL-Shortening-Service"/></Host>
 
 ``` 
+
+참조 : https://github.com/chaose37/URL-Shortening-Service/blob/master/file/server.xml
 
 ## 정리
 
