@@ -64,7 +64,7 @@
      * http:// 와 프로토콜 정보가 없는 경우는 뒤 url이 동일하다면 동일한 url로 판단 https://의 경우 별개의 url로 판단함.
      
    * Shortening된 URL을 요청받으면 원래 URL로 리다이렉트
-     * http://localhost:8080/{Shortening Key} 형대로 GET 방식 접근 시 원본 URL로 리다이렉트 해줌
+     * localhost:8080/{ShorteningKey} 형대로 GET 방식 접근 시 원본 URL로 리다이렉트 해줌
      * 현재 URL의 유효성은 체크하고 있지 않음 
    
      
@@ -123,6 +123,6 @@
   1. URL 입력 시 DB 에 해당 URL이 이미 존재하는지 체크하고 이미 존재한다면 Shortening Key 반환
   2. URL이 DB에 없다면 SEQ_URL01.NEXTVAL 하여 다음 id 획득
   3. 고유한 정수인 id값을 base62 encode 하여 Shortening Key 생성 후 DB 저장 후 반환
-  4. http://localhost:8080/{Shortening Key} 요청시 DB에서 해당 Shortening Key에 해당하는 URL을 조회 하여 해당 URL로 리다이렉트함
+  4. localhost:8080/{ShorteningKey} 요청시 DB에서 해당 Shortening Key에 해당하는 URL을 조회 하여 해당 URL로 리다이렉트함
 
 
